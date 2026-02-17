@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Add_Aluno.dart';
 import 'Tela_Pei.dart';
+import '../Modelo/Studant.dart';
 
 class Entrada extends StatefulWidget {
   const Entrada({super.key});
@@ -10,28 +11,41 @@ class Entrada extends StatefulWidget {
 }
 
 class _EntradaState extends State<Entrada> {
-  final List<String> Studant = ["João", "Maria"];
+  final List<Aluno> students = [
+    Aluno(nome: "Maitê", caracter: "Fofinha"),
+    Aluno(nome: "Luiz", caracter: "Animadasso"),
+  ];
 
-  void AdicionarAluno(String nome) {
+  void adicionarAluno(String nome) {
     setState(() {
-      Studant.add(nome);
+      students.add(Aluno(nome: nome, caracter: "Sem descrição"));
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Lista de Alunos")),
       body: ListView.builder(
-        itemCount: Studant.length,
+        itemCount: students.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: const Icon(Icons.person),
-            title: Text(Studant[index]),
+            leading: CircleAvatar(
+              child: Text(
+                students[index].nome[0],
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            title: Text(students[index].nome),
+            subtitle: Text(students[index].caracter),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => TelaPei(Studant: Studant[index]),
+                  builder: (_) => TelaPei(studant: students[index]),
                 ),
               );
             },
@@ -44,8 +58,9 @@ class _EntradaState extends State<Entrada> {
             context,
             MaterialPageRoute(builder: (_) => AddAluno()),
           );
+
           if (novo != null) {
-            AdicionarAluno(novo);
+            adicionarAluno(novo);
           }
         },
         child: const Icon(Icons.add),
