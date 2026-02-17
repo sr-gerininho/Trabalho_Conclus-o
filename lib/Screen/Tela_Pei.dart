@@ -8,9 +8,8 @@ class TelaPei extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Pei - $Studant")
-      ),
-  //------------------------------------------------------------------------------//
+      appBar: AppBar(title: Text("Pei - $Studant")),
+      //------------------------------------------------------------------------------//
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -18,15 +17,13 @@ class TelaPei extends StatelessWidget {
           children: [
             Text(
               "Plano Educacional Individualizado ",
-              style: TextStyle(fontSize: 20,
-              fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(height: 20),
 
             Text("Aluno: $Studant"),
-            const SizedBox(height: 10,),
-            const Text("Objetivos")
+            const SizedBox(height: 10),
+            const Text("Objetivos"),
             const Text("- Desenvolver autonomia"),
             const Text("- Melhorar socialização"),
           ],
