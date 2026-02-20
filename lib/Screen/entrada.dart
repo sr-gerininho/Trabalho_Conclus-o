@@ -1,6 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:job/Modelo/Studant.dart';
+import 'package:job/Screen/Perfil_Studant.dart';
 
 class Entrada extends StatefulWidget {
   const Entrada({super.key});
@@ -62,11 +62,20 @@ class _EntradaState extends State<Entrada> {
               itemCount: alunosFiltrados.length,
               itemBuilder: (context, index) {
                 final aluno = alunosFiltrados[index];
+
                 return ListTile(
                   title: Text(aluno.nome),
                   subtitle: Text(
                     "${aluno.serie}º ${aluno.turma} - ${aluno.turno}",
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PerfilStudant(aluno: aluno),
+                      ),
+                    );
+                  },
                 );
               },
             ),

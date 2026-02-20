@@ -26,8 +26,6 @@ class TelaPei extends StatelessWidget {
             Text("Aluno: ${studant.nome}"),
             const SizedBox(height: 10),
 
-            Text("Características: ${studant.caracter}"),
-
             const SizedBox(height: 20),
 
             const Text("Objetivos"),
