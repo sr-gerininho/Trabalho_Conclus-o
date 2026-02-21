@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job/Modelo/Studant.dart';
-import 'package:job/Screen/Perfil_Studant.dart';
+import 'package:job/Screen/Add_Aluno.dart';
+import 'package:job/Screen/TelaPei.dart';
 
 class Entrada extends StatefulWidget {
   const Entrada({super.key});
@@ -42,6 +43,16 @@ class _EntradaState extends State<Entrada> {
 
     return Scaffold(
       appBar: AppBar(title: const Text("Carômetro")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddAluno()),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
+
       body: Column(
         children: [
           TextField(
@@ -72,7 +83,7 @@ class _EntradaState extends State<Entrada> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PerfilStudant(aluno: aluno),
+                        builder: (context) => TelaPei(aluno: aluno),
                       ),
                     );
                   },

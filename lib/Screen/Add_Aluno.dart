@@ -10,6 +10,16 @@ class AddAluno extends StatefulWidget {
 }
 
 class _AddAlunoState extends State<AddAluno> {
+  final TextEditingController campo1 = TextEditingController();
+  final TextEditingController campo2 = TextEditingController();
+  final TextEditingController campo3 = TextEditingController();
+  final TextEditingController campo4 = TextEditingController();
+  final TextEditingController campo5 = TextEditingController();
+  final TextEditingController campo6 = TextEditingController();
+  final TextEditingController campo7 = TextEditingController();
+  final TextEditingController campo8 = TextEditingController();
+  final TextEditingController campo9 = TextEditingController();
+
   final TextEditingController editor = TextEditingController();
   String? imagemPath;
 
@@ -53,8 +63,17 @@ class _AddAlunoState extends State<AddAluno> {
                 border: OutlineInputBorder(),
               ),
             ),
-
             const SizedBox(height: 20),
+            TextField(
+              controller: campo1,
+              decoration: const InputDecoration(labelText: "Não está pronto."),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: campo2,
+              decoration: const InputDecoration(labelText: "Não está pronto."),
+            ),
+            const SizedBox(height: 10),
 
             SizedBox(
               width: double.infinity,

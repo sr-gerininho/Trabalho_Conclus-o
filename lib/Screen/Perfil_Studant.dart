@@ -1,7 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:job/Modelo/Studant.dart';
-import 'Tela_Pei.dart';
+import 'package:job/Screen/TelaPei.dart';
 
 class PerfilStudant extends StatelessWidget {
   final Aluno aluno;
@@ -15,23 +14,18 @@ class PerfilStudant extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage:
-                  aluno.foto != null ? FileImage(File(aluno.foto!)) : null,
-              child:
-                  aluno.foto == null
-                      ? const Icon(Icons.person, size: 40)
-                      : null,
-            ),
-
-            const SizedBox(height: 20),
+            Text("Nome: ${aluno.nome}", style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 10),
 
             Text("Série: ${aluno.serie}º"),
-            Text("Turma: ${aluno.turma}"),
-            Text("Turno: ${aluno.turno}"),
+            const SizedBox(height: 10),
 
+            Text("Turma: ${aluno.turma}"),
+            const SizedBox(height: 10),
+
+            Text("Turno: ${aluno.turno}"),
             const SizedBox(height: 30),
 
             ElevatedButton(
@@ -39,7 +33,7 @@ class PerfilStudant extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TelaPei(Studant: aluno.nome),
+                    builder: (context) => TelaPei(aluno: aluno),
                   ),
                 );
               },
