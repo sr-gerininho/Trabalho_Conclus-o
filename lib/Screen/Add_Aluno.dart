@@ -10,17 +10,18 @@ class AddAluno extends StatefulWidget {
 }
 
 class _AddAlunoState extends State<AddAluno> {
-  final TextEditingController campo1 = TextEditingController();
-  final TextEditingController campo2 = TextEditingController();
-  final TextEditingController campo3 = TextEditingController();
-  final TextEditingController campo4 = TextEditingController();
-  final TextEditingController campo5 = TextEditingController();
-  final TextEditingController campo6 = TextEditingController();
-  final TextEditingController campo7 = TextEditingController();
-  final TextEditingController campo8 = TextEditingController();
-  final TextEditingController campo9 = TextEditingController();
+  final TextEditingController Nome = TextEditingController();
+  final TextEditingController Nascimento = TextEditingController();
+  final TextEditingController Religiao = TextEditingController();
+  final TextEditingController serie = TextEditingController();
+  final TextEditingController Turma = TextEditingController();
+  final TextEditingController Endereco = TextEditingController();
+  final TextEditingController Telefone = TextEditingController();
+  final TextEditingController Email = TextEditingController();
+  final TextEditingController Pai = TextEditingController();
+  final TextEditingController Mae = TextEditingController();
+  final TextEditingController Alergias = TextEditingController();
 
-  final TextEditingController editor = TextEditingController();
   String? imagemPath;
 
   Future<void> escolherImagem() async {
@@ -38,12 +39,18 @@ class _AddAlunoState extends State<AddAluno> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Adicionar Aluno")),
+      appBar: AppBar(title: const Text("Cadastro de Aluno")),
 
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "DADOS PESSOAIS",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+
             GestureDetector(
               onTap: escolherImagem,
               child: CircleAvatar(
@@ -56,32 +63,25 @@ class _AddAlunoState extends State<AddAluno> {
 
             const SizedBox(height: 20),
 
-            TextField(
-              controller: editor,
-              decoration: const InputDecoration(
-                labelText: "Nome do Aluno",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: campo1,
-              decoration: const InputDecoration(labelText: "Não está pronto."),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: campo2,
-              decoration: const InputDecoration(labelText: "Não está pronto."),
-            ),
-            const SizedBox(height: 10),
+            _buildCampo("Nome", Nome),
+            _buildCampo("Nascimento", Nascimento),
+            _buildCampo("Religião", Religiao),
+            _buildCampo("Série", serie),
+            _buildCampo("Turma", Turma),
+            _buildCampo("Endereço", Endereco),
+            _buildCampo("Telefone", Telefone),
+            _buildCampo("Email", Email),
+            _buildCampo("Pai", Pai),
+            _buildCampo("Mãe", Mae),
+            _buildCampo("Alergias", Alergias),
 
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  if (editor.text.trim().isNotEmpty) {
+                  if (Nome.text.trim().isNotEmpty) {
                     Navigator.pop(context, {
-                      "nome": editor.text,
+                      "nome": Nome.text,
                       "foto": imagemPath,
                     });
                   }
@@ -90,6 +90,19 @@ class _AddAlunoState extends State<AddAluno> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCampo(String label, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          border: const OutlineInputBorder(),
         ),
       ),
     );
