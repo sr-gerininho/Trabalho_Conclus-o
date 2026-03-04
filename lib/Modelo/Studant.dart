@@ -1,27 +1,17 @@
-class Aluno {
-  final String nome;
-  final int serie;
-  final String turma;
-  final String turno;
-  final String? foto;
+import 'pei.dart';
 
-  //Dados pedagógicos (PEI)
-  final String? diagnostico;
-  final String? nivelSuporte;
-  final String? objetivos;
-  final String? estrategias;
-  final String? observacoes;
+class AlunoModel {
+  String nome;
+  String? foto;
+  String serie;
+  String turma;
+  PeiModel pei;
 
-  Aluno({
+  AlunoModel({
     required this.nome,
+    this.foto,
     required this.serie,
     required this.turma,
-    required this.turno,
-    this.foto,
-    this.diagnostico,
-    this.nivelSuporte,
-    this.objetivos,
-    this.estrategias,
-    this.observacoes,
-  });
+    PeiModel? pei,
+  }) : pei = pei ?? PeiModel();
 }
