@@ -6,7 +6,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1565C0)),
     scaffoldBackgroundColor: const Color(0xFFEAF2FB),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF1565C0),
+      backgroundColor: Color.fromARGB(255, 21, 72, 192),
       foregroundColor: Colors.white,
       centerTitle: true,
     ),
